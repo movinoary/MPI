@@ -1,0 +1,129 @@
+// Color
+$black100: #050505;
+$black000: #000000;
+$purple300: #3e065f;
+$purple200: #700b97;
+$purple100: #8e05c2;
+$green400: #d2e5bd;
+$green300: #d1e7d1;
+$green200: #e3efda;
+$green100: #eef6ea;
+$gray500: #7b7b7b;
+$gray400: #aeaeae;
+$gray300: #d3d3d3;
+$gray200: #eeeeee;
+$gray100: #f7f7f7;
+$red100: #ff4949;
+$orange100: #ff8d29;
+$white000: #ffffff;
+
+// font
+$rem370: 3.7rem;
+$rem350: 3.5rem;
+$rem330: 3.3rem;
+$rem300: 3rem;
+$rem270: 2.7rem;
+$rem250: 2.5rem;
+$rem230: 2.3rem;
+$rem220: 2.2rem;
+$rem210: 2.1rem;
+$rem200: 2rem;
+$rem170: 1.7rem;
+$rem150: 1.5rem;
+$rem130: 1.3rem;
+$rem120: 1.2rem;
+$rem110: 1.1rem;
+$rem100: 1rem;
+$rem090: 0.9rem;
+$rem080: 0.8rem;
+$rem070: 0.7rem;
+$rem050: 0.5rem;
+$rem030: 0.3rem;
+
+$transitionFast: 0.3s ease all;
+$transitionNormal: 0.5s ease all;
+$transitionSlow: 1s ease all;
+
+// shadow
+$shadowLowBot: 0 5px 5px
+  rgba(
+    $color: $black000,
+    $alpha: 0.3,
+  );
+
+$shadowLow: 0 0 5px
+  rgba(
+    $color: $black000,
+    $alpha: 0.2,
+  );
+
+@mixin flex($flexDir, $align, $justCont) {
+  display: flex;
+  flex-direction: $flexDir;
+  align-items: $align;
+  justify-content: $justCont;
+}
+
+@mixin gradientPurple {
+  background: linear-gradient(
+    110deg,
+    rgba(242, 224, 171, 1) 0%,
+    rgba(229, 212, 216, 1) 48%,
+    rgba(217, 213, 255, 1) 100%
+  );
+}
+
+@mixin gradientOrange {
+  background: linear-gradient(
+    90deg,
+    rgba(242, 224, 171, 1) 0%,
+    rgba(245, 191, 203, 1) 100%
+  );
+}
+
+@mixin scale {
+  &:hover {
+    transform: scale(1.2, 1.2);
+  }
+  &:active {
+    transform: scale(0.9, 0.9);
+    transition: $transitionFast;
+  }
+}
+
+@mixin buttonStandart($font, $color, $colorHover) {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: 10px 15px;
+  font-size: $font;
+  border-radius: 10px;
+  border: none;
+  background-color: $color;
+  box-shadow: $shadowLow;
+  cursor: pointer;
+  transition: $transitionNormal;
+
+  &:hover {
+    background-color: $colorHover;
+    transition: $transitionNormal;
+  }
+}
+
+@mixin inputStandart($font) {
+  border: none;
+  background-color: transparent;
+  font-size: $font;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin cardCredit($padding) {
+  @include flex(column, center, space-between);
+  border-radius: 25px;
+  padding: $padding;
+  box-shadow: $shadowLow;
+  width: 100%;
+  height: 225px;
+}
