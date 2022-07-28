@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .number {
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      input {
+        font-size: 2rem;
+        padding: 10px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 2rem;
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="number">
+      <input id="number" type="number" />
+      <h1 id="words"></h1>
+    </div>
+  </body>
+  <script>
+    var a = [
+      "",
+      "satu ",
+      "dua ",
+      "tiga ",
+      "empat ",
+      "lima ",
+      "enam ",
+      "tujuh ",
+      "delapan ",
+      "sembilan ",
+      "sepuluh ",
+      "sebelas ",
+      "dua belas ",
+      "tiga belas ",
+      "empat belas ",
+      "lima belas ",
+      "enam belas ",
+      "tujuh belas ",
+      "delapan belas ",
+      "sembilan belas ",
+    ];
+    var b = [
+      "",
+      "",
+      "dua puluh",
+      "tiga puluh",
+      "empat puluh",
+      "lima puluh",
+      "enam puluh",
+      "tujuh puluh",
+      "delapan puluh",
+      "sembilan puluh",
+    ];
+
+    function inWords(num) {
+      if ((num = num.toString()).length > 6) return "tidak terhitung";
+      n = ("000000000" + num)
+        .substr(-9)
+        .match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+      if (!n) return;
+      let str = "";
+
+      str +=
+        n[2] != 0
+          ? (a[Number(n[2])] || b[n[2][0]] + " " + a[n[2][1]]) + "ratus ribu "
+          : "";
+
+      str +=
+        n[3] != 0
+          ? (a[Number(n[3])] || b[n[3][0]] + " " + a[n[3][1]]) + "ribu "
+          : "";
+
+      str +=
+        n[4] != 0
+          ? (a[Number(n[4])] || b[n[4][0]] + " " + a[n[4][1]]) + "ratus "
+          : "";
+
+      str +=
+        n[5] != 0
+          ? (str != "" ? "" : "") +
+            (a[Number(n[5])] || b[n[5][0]] + " " + a[n[5][1]]) +
+            ""
+          : "";
+
+      return str;
+    }
+
+    document.getElementById("number").onkeyup = function () {
+      document.getElementById("words").innerHTML = inWords(
+        document.getElementById("number").value
+      );
+    };
+  </script>
+</html>
